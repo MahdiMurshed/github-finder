@@ -2,7 +2,8 @@
 
 ---
 
-1.Context api
-2.Github api
-3.Tailwindcss
-4.Daisyui
+-Context api
+-Github api
+-Tailwindcss
+-Daisyui
+-Typescript
