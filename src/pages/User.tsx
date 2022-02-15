@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { GithubContext } from "../context/github/GithubContext";
 import { Link } from "react-router-dom";
 import { getUserAndRepo } from "../context/github/GithubActions";
 import RepoList from "../components/repos/RepoList";
+import { FaTwitter, FaGithub } from "react-icons/fa";
 
 const User = () => {
   const { user, repos, loading, dispatch } = useContext(GithubContext);
@@ -56,45 +57,63 @@ const User = () => {
             </figure>
           </div>
           <div className="card-body text-lg col-span-2">
+            <div className="flex gap-2 items-center ">
+              <div className="badge badge-success font-bold text-black">
+                {login}
+              </div>
+              <div className="badge badge-accent font-bold text-black">
+                {type}
+              </div>
+            </div>
             <h2 className="card-title">{name}</h2>
+            {location && <h4>{`Location : ${location}`}</h4>}
             <p>{bio}</p>
             <div className="justify-start  card-actions">
               <button className="btn btn-outline">
                 <a href={html_url} target="_blank" rel="noreferrer">
-                  Visit on Github
+                  <FaGithub className="inline w-7 h-7 font-3xl mr-2" />
+                  Github
                 </a>
               </button>
-              <button className="btn btn-outline">
-                <a
-                  href={`https://twitter.com//${twitter_username}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  twitter
-                </a>
-              </button>
-              <button className="btn btn-outline">
-                <a href={`https://${blog}`} target="_blank" rel="noreferrer">
-                  Website
-                </a>
-              </button>
+              {twitter_username && (
+                <button className="btn btn-outline bg-blue-500">
+                  <a
+                    href={`https://twitter.com//${twitter_username}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FaTwitter className="inline w-7 h-7 mr-2   " />
+                    Twitter
+                  </a>
+                </button>
+              )}
+              {blog && (
+                <button className="btn btn-outline">
+                  <a href={`https://${blog}`} target="_blank" rel="noreferrer">
+                    Website
+                  </a>
+                </button>
+              )}
             </div>
           </div>
           <div className="md:mt-4 shadow stats md:col-span-3">
             <div className="stat place-items-center">
-              <div className="stat-title">Followers</div>
-              <div className="stat-value">{followers}</div>
+              <div className="stat-title ">Followers</div>
+              <div className="stat-value text-xl">{followers}</div>
             </div>
 
             <div className="stat place-items-center ">
               <div className="stat-title">Following</div>
-              <div className="stat-value text-secondary">{following}</div>
+              <div className="stat-value  text-xl">{following}</div>
             </div>
 
             <div className="stat place-items-center">
               <div className="stat-title">Public Repos</div>
-              <div className="stat-value">{public_repos}</div>
-              <div className="stat-desc">{`public gists ${public_gists}`}</div>
+              <div className="stat-value text-xl">{public_repos}</div>
+            </div>
+            <div className="stat place-items-center">
+              <div className="stat-title">Public Gists</div>
+              <div className="stat-value text-xl">{public_gists}</div>
             </div>
           </div>
         </div>

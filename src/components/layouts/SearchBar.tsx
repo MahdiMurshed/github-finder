@@ -17,13 +17,22 @@ const SearchBar = () => {
 
     console.log(text);
   };
-  const handleClear = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+  const handleKeyPress = (e: any) => {
+    if (e.keyCode === 13) {
+      handleSubmit(e);
+    }
+  };
+  const handleClear = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.preventDefault();
+    setText("");
     dispatch({ type: "CLEAR_USERS" });
+  };
   return (
     <div className="grid grid-cols-1 ">
       <div className="form-control mb-2">
         <div className="relative">
           <input
+            onKeyDown={handleKeyPress}
             type="text"
             placeholder="Search"
             className="input w-full "

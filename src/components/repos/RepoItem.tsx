@@ -40,6 +40,7 @@ const RepoItem = ({ repo }: any) => {
               <FaUtensils className="inline mr-2" />
               {repo.forks}
             </div>
+            <div></div>
           </div>
         </div>
       </div>
