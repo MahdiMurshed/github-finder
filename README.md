@@ -1,9 +1,8 @@
 # Github Finder Project
-
----
-
--Context api
--Github api
--Tailwindcss
--Daisyui
--Typescript
+### Technology used :
+- Reactjs
+- Context api
+- Github api
+- Tailwindcss
+- Daisyui
+- Typescript
