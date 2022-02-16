@@ -60,6 +60,7 @@ export const GithubContext = createContext<ContextType>({
   loading: true,
   user: userValue,
   repos: [],
+
   dispatch: () => {},
 });
 
